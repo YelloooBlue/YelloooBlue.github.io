@@ -1,23 +1,23 @@
 ---
-title: Text and Typography
-author: Cotes Chung
-date: 2019-08-08 11:33:00 +0800
+title: 第一篇博客
+author: YelloooBlue
+date: 2020-11-22 11:33:00 +0800
 categories: [Blogging, Demo]
-tags: [typography]
+tags: [感想]
 math: true
 image: /assets/img/sample/devices-mockup.png
 ---
 
-This post is to show Markdown syntax rendering on [**Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork), you can also use it as an example of writing. Now, let's start looking at text and typography.
 
 
-## Titles
+
+## 标题
 
 ---
 
-# H1
+# 一级标题
 
-<h2 data-toc-skip>H2</h2>
+<h2 data-toc-skip>学习markdown中</h2>
 
 <h3 data-toc-skip>H3</h3>
 
@@ -25,7 +25,7 @@ This post is to show Markdown syntax rendering on [**Chirpy**](https://github.co
 
 ---
 
-## Paragraph
+##段落
 
 I wandered lonely as a cloud
 
@@ -39,15 +39,15 @@ Beside the lake, beneath the trees,
 
 Fluttering and dancing in the breeze.
 
-## List
+## 列表
 
-### Ordered list
+### 排序列表
 
 1. first item
 2. second item
 3. third item
 
-### Unordered list
+###不排序列表
 
 - item 1
 	- sub item 1
@@ -55,11 +55,11 @@ Fluttering and dancing in the breeze.
 
 - item 2
 
-## Block Quote
+## 引用
 
 > This line to shows the Block Quote.
 
-## Tables
+## 表格
 
 | Company                      | contact          | Country |
 |:-----------------------------|:-----------------|--------:|
@@ -67,9 +67,9 @@ Fluttering and dancing in the breeze.
 | Island Trading               | Helen Bennett    | UK      |
 | Magazzini Alimentari Riuniti | Giovanni Rovelli | Italy   |
 
-## Link
+## 超链接
 
-<http://127.0.0.1:4000>
+<http://acm.scau.edu.cn:8000>
 
 
 ## Footnote
@@ -77,9 +77,9 @@ Fluttering and dancing in the breeze.
 Click the hook will locate the footnote[^footnote].
 
 
-## Images
+## 图像
 
-By default, the image is centered and the image caption can be displayed at the bottom:
+By default, the image is centered and the image caption can be displayed at the 按钮:
 
 ![Desktop View](/assets/img/sample/mockup.png)
 _Full screen width and center alignment_
