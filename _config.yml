@@ -10,7 +10,7 @@
 
 title: YelloooBlue's Blog                          # the main title
 
-tagline: 随便写写.  # it will display as the sub-title
+tagline: 随便写写  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   A minimal, portfolio, sidebar,
@@ -31,11 +31,11 @@ twitter:
   username: twitter_username            # change to your twitter username
 
 social:
-  name: your_full_name                  # it will shows as the copyright owner in Footer
+  name: Yellooblue                  # it will shows as the copyright owner in Footer
   email: YelloooBlue@qq.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
+    #- https://twitter.com/username      # change to your twitter homepage
     - https://github.com/YelloooBlue       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
