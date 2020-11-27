@@ -19,16 +19,20 @@ image: /assets/img/Blog/2020-11-27/NodeMCU.jpg
 <i><br>（以上内容具体教程留意后续博客哦）</i>
 
 # 二、开整：
+
 ## 1. 下载点灯科技Blinker APP：
 <https://www.diandeng.tech/>
+
 ## 2. 注册点灯科技Blinker账号：
-## 3. 添加设备：
-<image src="../assets/img/Blog/2020-11-27/Blinker_APP1.jpg">
+
+# 3. 添加设备：
+![upload-image](/assets/img/Blog/2020-11-27/Blinker_APP1.jpg)
+
 独立设备-->WIFI接入-->阿里云-->获取Secret Key
 
 ## 4. 编写硬件程序：
 
-```
+```c
 #define BLINKER_WIFI  //点灯科技
 #define BLINKER_MIOT_LIGHT  //小爱同学支持  
 #define LED_BUILTIN 16  //LED引脚
