@@ -25,7 +25,7 @@ image: /assets/img/Blog/2020-11-27/NodeMCU.jpg
 
 ## 2. 注册点灯科技Blinker账号：
 
-# 3. 添加设备：
+## 3. 添加设备：
 ![upload-image](/assets/img/Blog/2020-11-27/Blinker_APP1.jpg)
 
 > 独立设备-->WIFI接入-->阿里云-->获取Secret Key
@@ -98,3 +98,10 @@ void loop() {
 
 ><b>注意这里的数据键名要与程序中一致
 
+添加完开关组件、就可以点击控制LED开关了。
+
+## 6. 米家APP或小爱音响绑定设备
+![upload-image](/assets/img/Blog/2020-11-27/MIJIA_APP1.jpg)
+><b>米家-->右下角我的-->其他平台设备-->添加点灯科技-->刷新设备
+
+就可以看到刚刚添加的设备了，只要对小爱同学说 打开xxx（xxx为BlinkerAPP中的设备名称）就可以了。
