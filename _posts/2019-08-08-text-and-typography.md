@@ -1,210 +1,94 @@
 ---
-title: Text and Typography
-author: Cotes Chung
-date: 2019-08-08 11:33:00 +0800
-categories: [Blogging, Demo]
-tags: [typography]
+title: 如何让小爱同学控制一颗LED_基于ESP8266_NodeMCU
+author: YelloooBlue
+date: 2020-11-27 14:33:00 +0800
+categories: [博客, 小实验]
+tags: [ESP8266, IOT, NodeMCU, 小爱同学]
 math: true
-image: /assets/img/sample/devices-mockup.png
+image: /assets/img/Blog/2020-11-27/NodeMCU.jpg
 ---
 
-This post is to show Markdown syntax rendering on [**Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork), you can also use it as an example of writing. Now, let's start looking at text and typography.
 
 
-## Titles
+# 一、准备：
 
----
+1.一块刷好 NodeMCU 固件的ESP8266
+<br>2.一台装好 Arduino IDE 的电脑
+<br>3.给 Arduino IDE 配置 NodeMCU 支持
+<br>4.良好的 2.4G WIFI 网络（无需登录） 
+<i><br>（以上内容具体教程留意后续博客哦）</i>
 
-# H1
+# 二、开整：
+## 1. 下载点灯科技Blinker APP：
+<https://www.diandeng.tech/>
+## 2. 注册点灯科技Blinker账号：
+## 3. 添加设备：
+<image src="../assets/img/Blog/2020-11-27/Blinker_APP1.jpg">
+独立设备-->WIFI接入-->阿里云-->获取Secret Key
 
-<h2 data-toc-skip>H2</h2>
-
-<h3 data-toc-skip>H3</h3>
-
-<h4>H4</h4>
-
----
-
-## Paragraph
-
-I wandered lonely as a cloud
-
-That floats on high o'er vales and hills,
-
-When all at once I saw a crowd,
-
-A host, of golden daffodils;
-
-Beside the lake, beneath the trees,
-
-Fluttering and dancing in the breeze.
-
-## List
-
-### Ordered list
-
-1. first item
-2. second item
-3. third item
-
-### Unordered list
-
-- item 1
-	- sub item 1
-	- sub item 2
-
-- item 2
-
-## Block Quote
-
-> This line to shows the Block Quote.
-
-## Tables
-
-| Company                      | contact          | Country |
-|:-----------------------------|:-----------------|--------:|
-| Alfreds Futterkiste          | Maria Anders     | Germany |
-| Island Trading               | Helen Bennett    | UK      |
-| Magazzini Alimentari Riuniti | Giovanni Rovelli | Italy   |
-
-## Link
-
-<http://127.0.0.1:4000>
-
-
-## Footnote
-
-Click the hook will locate the footnote[^footnote].
-
-
-## Images
-
-By default, the image is centered and the image caption can be displayed at the bottom:
-
-![Desktop View](/assets/img/sample/mockup.png)
-_Full screen width and center alignment_
-
-You can change the size of the picture:
-
-![Desktop View](/assets/img/sample/mockup.png){: width="400"}
-_400px image width_
-
-In addition, you can use class `normal` , `left` and `right` to specify the image position (but in these case, the image caption is prohibited), for example:
-
-- Normal position
-  
-  ![Desktop View](/assets/img/sample/mockup.png){: width="350" class="normal"}
-
-- Float to the left
-
-  ![Desktop View](/assets/img/sample/mockup.png){: width="240" class="left"}
-  "A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space."
-
-- Float to the right
-
-  ![Desktop View](/assets/img/sample/mockup.png){: width="240" class="right"}
-  "A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space."
-
-## Inline code
-
-This is an example of `Inline Code`.
-
-## Mathematics
-
-The mathematics powered by [**MathJax**](https://www.mathjax.org/):
-
-$$ \sum_{n=1}^\infty 1/n^2 = \frac{\pi^2}{6} $$
-
-When \\(a \ne 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\) and they are
-
-$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
-
-## Code Snippet
-
-### Common
+## 4. 编写硬件程序：
 
 ```
-This is a common code snippet, without syntax highlight and line number.
-```
+#define BLINKER_WIFI  //点灯科技
+#define BLINKER_MIOT_LIGHT  //小爱同学支持  
+#define LED_BUILTIN 16  //LED引脚
+#include <Blinker.h>  //点灯科技
 
-### Specific Languages
+char auth[] = "这里改成刚刚获取的Secret Key（保留双引号)";
+char ssid[] = "这里改成你的wifi名称（保留双引号）";
+char pswd[] = "这里改成你的wifi密码（保留双引号）";
 
-#### Console
+// 新建组件对象
+BlinkerButton Button1("btn-LED");   //新建一个按钮，数据键名为btn-LED，这个可以自定义
 
-```console
-$ date
-Sun Nov  3 15:11:12 CST 2019
+
+
+// 按下btn-LED按键即会执行该函数
+
+void button1_callback(const String & state) {
+    BLINKER_LOG("get button state: ", state);
+    digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));   //LED状态取反
+    Blinker.vibrate();
+}
+
+
+
+void miotPowerState(const String & state)   //小爱同学状态返回函数
+{  
+    BLINKER_LOG("need set power state: ", state);
+
+    if (state == BLINKER_CMD_ON) {
+        digitalWrite(LED_BUILTIN, LOW);
+        BlinkerMIOT.powerState("on");
+        BlinkerMIOT.print();
+    }
+    else if (state == BLINKER_CMD_OFF) {
+        digitalWrite(LED_BUILTIN, HIGH);
+        BlinkerMIOT.powerState("off");
+        BlinkerMIOT.print();
+    }
+}
+
+void setup() {
+   // 初始化串口
+    Serial.begin(9600);
+    BLINKER_DEBUG.stream(Serial);
+    BLINKER_DEBUG.debugAll();
+    pinMode(LED_BUILTIN, OUTPUT);   // 初始化LED的IO
+    digitalWrite(LED_BUILTIN, HIGH);
+    Blinker.begin(auth, ssid, pswd);    // 初始化blinker
+    Button1.attach(button1_callback);       //绑定按钮回调函数
+    BlinkerMIOT.attachPowerState(miotPowerState);     //绑定小爱同学状态回调函数
+}
+
+void loop() {
+    Blinker.run();    //运行
+}
 ```
 
 
-#### Terminal
+## 5. APP添加控制组件
+<image src="../assets/img/Blog/2020-11-27/Blinker_APP2.jpg">
+<image src="../assets/img/Blog/2020-11-27/Blinker_APP3.jpg">
+<b>注意这里的数据键名要与程序中一致</b>
 
-```terminal
-$ env |grep SHELL
-SHELL=/usr/local/bin/bash
-PYENV_SHELL=bash
-```
-
-#### Ruby
-
-```ruby
-def sum_eq_n?(arr, n)
-  return true if arr.empty? && n == 0
-  arr.product(arr).reject { |a,b| a == b }.any? { |a,b| a + b == n }
-end
-```
-
-#### Shell
-
-```shell
-if [ $? -ne 0 ]; then
-    echo "The command was not successful.";
-    #do the needful / exit
-fi;
-```
-
-#### Liquid
-
-{% raw %}
-```liquid
-{% if product.title contains 'Pack' %}
-  This product's title contains the word Pack.
-{% endif %}
-```
-{% endraw %}
-
-#### HTML
-
-```html
-<div class="sidenav">
-  <a href="#contact">Contact</a>
-  <button class="dropdown-btn">Dropdown
-    <i class="fa fa-caret-down"></i>
-  </button>
-  <div class="dropdown-container">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
-  </div>
-  <a href="#contact">Search</a>
-</div>
-```
-
-**Horizontal Scrolling**
-
-```html
-<div class="panel-group">
-  <div class="panel panel-default">
-    <div class="panel-heading" id="{{ category_name }}">
-      <i class="far fa-folder"></i>
-      <p>This is a very long long long long long long long long long long long long long long long long long long long long long line.</p>
-      </a>
-    </div>
-  </div>
-</div>
-```
-
-
-## Reverse Footnote
-
-[^footnote]: The footnote source.
