@@ -12,7 +12,7 @@ image: /assets/img/Blog/2020-11-27/NodeMCU.jpg
 
 # 一、准备：
 
-1.一块刷好 NodeMCU 固件的ESP8266
+1.一块刷好 NodeMCU 固件的 ESP8266 开发板（这里选择搭载了ESP-12E的）
 <br>2.一台装好 Arduino IDE 的电脑
 <br>3.给 Arduino IDE 配置 NodeMCU 支持
 <br>4.良好的 2.4G WIFI 网络（无需登录） 
@@ -28,7 +28,8 @@ image: /assets/img/Blog/2020-11-27/NodeMCU.jpg
 # 3. 添加设备：
 ![upload-image](/assets/img/Blog/2020-11-27/Blinker_APP1.jpg)
 
-独立设备-->WIFI接入-->阿里云-->获取Secret Key
+> 独立设备-->WIFI接入-->阿里云-->获取Secret Key
+
 
 ## 4. 编写硬件程序：
 
@@ -62,8 +63,8 @@ void miotPowerState(const String & state)   //小爱同学状态返回函数
     BLINKER_LOG("need set power state: ", state);
 
     if (state == BLINKER_CMD_ON) {
-        digitalWrite(LED_BUILTIN, LOW);
-        BlinkerMIOT.powerState("on");
+        digitalWrite(LED_BUILTIN, LOW);   //低电平开灯
+        BlinkerMIOT.powerState("on");   //设置灯开关状态
         BlinkerMIOT.print();
     }
     else if (state == BLINKER_CMD_OFF) {
@@ -92,7 +93,8 @@ void loop() {
 
 
 ## 5. APP添加控制组件
-<image src="../assets/img/Blog/2020-11-27/Blinker_APP2.jpg">
-<image src="../assets/img/Blog/2020-11-27/Blinker_APP3.jpg">
-<b>注意这里的数据键名要与程序中一致</b>
+![upload-image](/assets/img/Blog/2020-11-27/Blinker_APP2.jpg)
+![upload-image](/assets/img/Blog/2020-11-27/Blinker_APP3.jpg)
+
+><b>注意这里的数据键名要与程序中一致
 
